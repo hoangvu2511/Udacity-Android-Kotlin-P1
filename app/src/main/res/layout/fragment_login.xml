@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="loginViewModel"
+            type="com.udacity.shoestore.fragment.login.LoginViewModel" />
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="user"
+            type="com.udacity.shoestore.fragment.login.LoginViewModel.User" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="16dp">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:hint="@string/email"
+            android:text="@={user.edtEmail}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:inputType="textPassword"
+            android:text="@={user.edtPwd}"
+            android:hint="@string/password"
+            app:layout_constraintTop_toBottomOf="@id/edtEmail"
+            tools:text="efknef" />
+
+
+        <Button
+            android:id="@+id/btnCreateNewAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_account"
+            android:enabled="@{user.isValid}"
+            android:onClick="@{() -> loginViewModel.onCreateNewAccount()}"
+            app:layout_constraintEnd_toStartOf="@id/btnSignIn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edtPassword" />
+
+        <Button
+            android:id="@+id/btnSignIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_in"
+            android:enabled="@{user.isValid}"
+            android:onClick="@{() -> loginViewModel.onSignIn()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnCreateNewAccount"
+            app:layout_constraintTop_toTopOf="@id/btnCreateNewAccount" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
