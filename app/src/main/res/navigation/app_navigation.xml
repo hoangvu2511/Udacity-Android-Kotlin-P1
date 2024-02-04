@@ -43,6 +43,12 @@
         <action
             android:id="@+id/move_to_detail"
             app:destination="@id/shoeDetail" />
+
+        <action
+            android:id="@+id/logout"
+            app:destination="@id/login"
+            app:popUpTo="@id/listShoe"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment

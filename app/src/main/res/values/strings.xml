@@ -17,4 +17,5 @@
     <string name="company">Company</string>
     <string name="size">Size</string>
     <string name="description">Description</string>
+    <string name="logout">Logout</string>
 </resources>
